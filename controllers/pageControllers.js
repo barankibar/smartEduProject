@@ -10,12 +10,6 @@ exports.getAboutPage = (req, res) => {
   });
 }
 
-exports.getCoursesPage = (req, res) => {
-  res.status(200).render("courses", {
-    page_name: "courses",
-  });
-}
-
 exports.getContactPage = (req, res) => {
   res.status(200).render("contact", {
     page_name: "contact",

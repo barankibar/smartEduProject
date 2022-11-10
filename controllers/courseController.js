@@ -9,12 +9,48 @@ const createCourse = async (req, res) => {
       status: "success",
       course,
     });
-  } catch (err){
+  } catch (err) {
     res.status(400).json({
       status: "fail",
-      err
+      err,
     });
   }
-}
+};
 
-module.exports = {createCourse};
+const getAllCourses = asyncHandler(async (req, res) => {
+  try {
+    const courses = await Course.find({});
+
+    res.status(200).render("courses", {
+      courses,
+      page_name: "courses",
+    });
+  } catch (err) {
+    res.status(400).json({
+      status: "fail",
+      err,
+    });
+  }
+});
+
+const getCourse = asyncHandler(async (req, res) => {
+  try {
+    const course = await Course.findOne({ slug: req.params.slug });
+
+    res.status(200).render("course", {
+      course,
+      page_name: "courses",
+    });
+  } catch (err) {
+    res.status(400).json({
+      status: "fail",
+      err,
+    });
+  }
+});
+
+module.exports = {
+  createCourse,
+  getAllCourses,
+  getCourse,
+};
