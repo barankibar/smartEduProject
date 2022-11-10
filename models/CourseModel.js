@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const { default: slugify } = require("slugify");
+const Category = require("./CategoryModel");
 
 const Schema = mongoose.Schema;
 
@@ -21,6 +22,10 @@ const CourseSchema = new Schema({
   slug: {
     type: String,
     unique: true
+  },
+  category: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Category"
   }
 });
 

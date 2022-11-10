@@ -4,8 +4,9 @@ const app = express();
 
 const pageRoute = require("./routes/pageRoute");
 const courseRoute = require("./routes/courseRoute");
-// CONNECT DB
+const categoryRoute = require("./routes/categoryRoute");
 
+// CONNECT DB
 mongoose
   .connect("mongodb://0.0.0.0:27017/smartedu-db", {
     useUnifiedTopology: true,
@@ -28,6 +29,7 @@ app.use(express.urlencoded({ extended: true }));
 // ROUTES
 app.use("/", pageRoute);
 app.use("/courses", courseRoute);
+app.use("/categories", categoryRoute);
 
 const port = 3000;
 app.listen(port, () => {
