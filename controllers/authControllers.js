@@ -48,7 +48,14 @@ const userLogin = asyncHandler(async (req, res) => {
   }
 });
 
+const userLogout = (req, res) => {
+  req.session.destroy(() => {
+    res.redirect("/");
+  });
+};
+
 module.exports = {
   createUser,
   userLogin,
+  userLogout,
 };

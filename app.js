@@ -1,5 +1,6 @@
 const express = require("express");
 const session = require("express-session");
+const MongoStore = require("connect-mongo");
 const { default: mongoose } = require("mongoose");
 const app = express();
 
@@ -26,7 +27,6 @@ app.set("view engine", "ejs");
 
 // GLOBAL VARIABLES
 (global.userIN = null),
-
   // MIDDLEWARES
   app.use(express.static("public"));
 app.use(express.json());
@@ -36,6 +36,9 @@ app.use(
     secret: "keyboard_cat",
     resave: false,
     saveUninitialized: true,
+    store: MongoStore.create({
+      mongoUrl: "mongodb://0.0.0.0:27017/smartedu-db",
+    }),
   })
 );
 
