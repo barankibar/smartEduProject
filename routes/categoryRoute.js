@@ -5,5 +5,4 @@ const router = express.Router();
 
 router.route("/").post(categoryController);
 
-
 module.exports = router;

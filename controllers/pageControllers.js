@@ -1,23 +1,37 @@
-exports.getIndexPage = (req, res) => {
+const getIndexPage = (req, res) => {
   res.status(200).render("index", {
     page_name: "index",
   });
-}
+};
 
-exports.getAboutPage = (req, res) => {
+const getAboutPage = (req, res) => {
   res.status(200).render("about", {
     page_name: "about",
   });
-}
+};
 
-exports.getContactPage = (req, res) => {
+const getContactPage = (req, res) => {
   res.status(200).render("contact", {
     page_name: "contact",
   });
-}
+};
 
-exports.getDashboardPage = (req, res) => {
+const getDashboardPage = (req, res) => {
   res.status(200).render("dashboard", {
     page_name: "dashboard",
   });
-}
+};
+
+const getRegisterPage = (req, res) => {
+  res.status(200).render("register", {
+    page_name: "register",
+  });
+};
+
+module.exports = {
+  getRegisterPage,
+  getIndexPage,
+  getAboutPage,
+  getContactPage,
+  getDashboardPage,
+};
