@@ -28,10 +28,17 @@ const getRegisterPage = (req, res) => {
   });
 };
 
+const getLoginPage = (req, res) => {
+  res.status(200).render("login", {
+    page_name: "login",
+  });
+};
+
 module.exports = {
   getRegisterPage,
   getIndexPage,
   getAboutPage,
   getContactPage,
   getDashboardPage,
+  getLoginPage,
 };

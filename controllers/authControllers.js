@@ -1,5 +1,7 @@
 const asyncHandler = require("express-async-handler");
 
+const bcrypt = require("bcrypt");
+
 const User = require("../models/UserModel.js");
 
 const createUser = asyncHandler(async (req, res) => {
@@ -18,4 +20,34 @@ const createUser = asyncHandler(async (req, res) => {
   }
 });
 
-module.exports = {createUser};
+const userLogin = asyncHandler(async (req, res) => {
+  try {
+    const { email, password } = req.body;
+
+    asyncHandler(
+      await User.findOne({ email }, (err, user) => {
+        if (user) {
+          bcrypt.compare(password, user.password, (err, same) => {
+            if (same) {
+              // USER SESSION
+              res.status(200).send("You login");
+            }
+          });
+        }
+      }).clone((err) => {
+        //USING CLONE BECAUSE Mongoose no longer allows executing the same query object twice.
+        console.log(err);
+      })
+    );
+  } catch (err) {
+    res.status(400).json({
+      status: "fail",
+      err,
+    });
+  }
+});
+
+module.exports = {
+  createUser,
+  userLogin,
+};
