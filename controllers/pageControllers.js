@@ -16,11 +16,6 @@ const getContactPage = (req, res) => {
   });
 };
 
-const getDashboardPage = (req, res) => {
-  res.status(200).render("dashboard", {
-    page_name: "dashboard",
-  });
-};
 
 const getRegisterPage = (req, res) => {
   res.status(200).render("register", {
@@ -39,6 +34,5 @@ module.exports = {
   getIndexPage,
   getAboutPage,
   getContactPage,
-  getDashboardPage,
   getLoginPage,
 };
