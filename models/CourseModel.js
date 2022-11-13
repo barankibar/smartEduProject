@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const { default: slugify } = require("slugify");
 const Category = require("./CategoryModel");
+const User = require("./UserModel");
 
 const Schema = mongoose.Schema;
 
@@ -26,6 +27,10 @@ const CourseSchema = new Schema({
   category: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Category"
+  },
+  user: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User",
   }
 });
 
@@ -38,6 +43,6 @@ CourseSchema.pre("validate", function (next) {
   next();
 })
 
-const Course = mongoose.model("course", CourseSchema);
+const Course = mongoose.model("Course", CourseSchema);
 
 module.exports = Course;

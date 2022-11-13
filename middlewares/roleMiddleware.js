@@ -1,7 +1,8 @@
 const roleChecker = (roles) => {
     return (req, res ,next) => {
         const userRole = req.body.role;
-        if(roles.include(userRole)) {
+        console.log(userRole);
+        if(roles.includes(userRole)) {
             next();
         }
         else {

@@ -26,9 +26,10 @@ mongoose
 app.set("view engine", "ejs");
 
 // GLOBAL VARIABLES
-(global.userIN = null),
-  // MIDDLEWARES
-  app.use(express.static("public"));
+global.userIN = null;
+
+// MIDDLEWARES
+app.use(express.static("public"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(
