@@ -7,7 +7,12 @@ const router = express.Router();
 router.route("/").get(pageController.getIndexPage);
 router.route("/about").get(pageController.getAboutPage);
 router.route("/contact").get(pageController.getContactPage);
-router.route("/register").get(authMiddleware.checkLoginRegisterAuth, pageController.getRegisterPage);
-router.route("/login").get(authMiddleware.checkLoginRegisterAuth, pageController.getLoginPage);
+router
+  .route("/register")
+  .get(authMiddleware.checkLoginRegisterAuth, pageController.getRegisterPage);
+router
+  .route("/login")
+  .get(authMiddleware.checkLoginRegisterAuth, pageController.getLoginPage);
+router.route("/contact").post(pageController.emailService);
 
 module.exports = router;

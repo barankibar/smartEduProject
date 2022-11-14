@@ -24,6 +24,12 @@
     <div id="overviews" class="section wb">
         <div class="container">
             <div class="row"> 
+				<form method="GET" id="site-searchform" action="/courses">
+					<div>
+					  <input class="input-text form-control" name="search" id="search-k" placeholder="Search..." type="text">
+					  <button id="searchsubmit" value="Search" type="submit"></button>
+					</div>
+				</form>
                 <div class="col-lg-9 blog-post-single">
 				    <div class="row"> 
 						<% for(i = 0 ; i < courses.length ; i++ ) {%></courses.length-1>
